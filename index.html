@@ -8,18 +8,21 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to the Higher or Lower Game!</h1>
-        <p id="score">Current score: 0</p>
-        <div id="comparison">
-            <p id="compare-a"></p>
-            <p id="compare-b"></p>
+        <h1>Higher or Lower Game</h1>
+        <div class="game">
+            <div id="choiceA" class="choice">
+                <p>Compare A: <span id="optionA">Option A</span></p>
+            </div>
+            <div id="vs">VS</div>
+            <div id="choiceB" class="choice">
+                <p>Compare B: <span id="optionB">Option B</span></p>
+            </div>
         </div>
-        <div id="controls">
-            <button id="button-a">A</button>
-            <button id="button-b">B</button>
+        <div class="controls">
+            <button id="buttonA">A has more</button>
+            <button id="buttonB">B has more</button>
         </div>
-        <p id="result"></p>
-        <button id="play-again" style="display:none;">Play Again</button>
+        <div id="score">Current Score: 0</div>
     </div>
     <script src="script.js"></script>
 </body>

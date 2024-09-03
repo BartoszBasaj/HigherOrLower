@@ -1,29 +1,65 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background: url('assets/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
     text-align: center;
-    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .container {
-    margin: 50px auto;
-    width: 300px;
+    background: rgba(0, 0, 0, 0.7);
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
 }
 
-#controls button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
+h1 {
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    animation: fadeInDown 1s ease;
 }
 
-#play-again {
+.choice {
+    font-size: 1.5em;
+    margin: 20px 0;
+    animation: fadeIn 1.5s ease;
+}
+
+.controls {
     margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    cursor: pointer;
 }
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#score {
+    margin-top: 20px;
+    font-size: 1.2em;
+    animation: fadeInUp 1s ease;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);

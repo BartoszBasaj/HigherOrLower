@@ -1,4 +1,4 @@
-const data = {
+const dict = {
     "Kim Kardashian": 3000000,
     "Cristiano Ronaldo": 5000000,
     "Taylor Swift": 6000000,
@@ -62,68 +62,62 @@ const data = {
     "Dota 2": 1200000,
     "Super Mario": 3000000,
     "The Legend of Zelda": 2000000
-
 };
-
+const stuff = ["Kim Kardashian", "Cristiano Ronaldo", "Taylor Swift", "Ariana Grande", "Elon Musk", "Jeff Bezos", "PewDiePie", "MrBeast", "iPhone", "Samsung Galaxy", "PlayStation 5", "Xbox Series X", "TikTok", "Instagram", "ChatGPT", "Siri", "Breaking Bad", "Game of Thrones", "Avengers: Endgame", "Titanic", "Harry Potter", "Lord of the Rings", "Friends", "The Office", "Nike", "Adidas", "Coca-Cola", "Pepsi", "McDonald's", "Burger King", "Tesla", "BMW", "NBA", "NFL", "LeBron James", "Michael Jordan", "Lionel Messi", "Super Bowl", "World Cup", "Paris", "New York", "Eiffel Tower", "Statue of Liberty", "Maldives", "Hawaii", "Great Wall of China", "Machu Picchu", "The Beatles", "Rolling Stones", "Billie Eilish", "Post Malone", "Drake", "Kanye West", "Thriller", "The Dark Side of the Moon", "Fortnite", "Minecraft", "Call of Duty", "Battlefield", "League of Legends", "Dota 2", "Super Mario", "The Legend of Zelda"
+]
 let score = 0;
-let items = Object.keys(data);
+let currentChoices = [];
 
-const scoreElement = document.getElementById('score');
-const resultElement = document.getElementById('result');
-const compareAElement = document.getElementById('compare-a');
-const compareBElement = document.getElementById('compare-b');
-const playAgainButton = document.getElementById('play-again');
-
-function updateScore() {
-    scoreElement.textContent = `Current score: ${score}`;
+function getRandomChoices() {
+    const [first, second] = randomSample(stuff, 2);
+    document.getElementById("optionA").textContent = first;
+    document.getElementById("optionB").textContent = second;
+    currentChoices = [first, second];
 }
 
-function getRandomItems() {
-    const [first, second] = items.sort(() => 0.5 - Math.random()).slice(0, 2);
-    return { first, second };
-}
-
-function displayItems() {
-    const { first, second } = getRandomItems();
-    compareAElement.textContent = `Compare A: ${first}`;
-    compareBElement.textContent = `Against B: ${second}`;
-    compareAElement.dataset.item = first;
-    compareBElement.dataset.item = second;
+function randomSample(arr, n) {
+    const result = [];
+    const taken = new Set();
+    while (result.length < n) {
+        const index = Math.floor(Math.random() * arr.length);
+        if (!taken.has(index)) {
+            result.push(arr[index]);
+            taken.add(index);
+        }
+    }
+    return result;
 }
 
 function checkWinner(choice) {
-    const first = compareAElement.dataset.item;
-    const second = compareBElement.dataset.item;
+    const [first, second] = currentChoices;
+    const correct = (choice === "A" && dict[first] > dict[second]) || (choice === "B" && dict[first] < dict[second]);
 
-    if ((choice === 'A' && data[first] > data[second]) ||
-        (choice === 'B' && data[first] < data[second])) {
-        resultElement.textContent = "Yes, you are right!";
-        score += 1;
+    if (correct) {
+        score++;
+        document.getElementById("score").textContent = `Current Score: ${score}`;
+        animateCorrectChoice(choice);
+        setTimeout(getRandomChoices, 1000);
     } else {
-        resultElement.textContent = `You lose with ${score} point${score !== 1 ? 's' : ''}`;
-        score = 0;
+        alert(`Game over! Your final score is: ${score}`);
+        resetGame();
     }
-    updateScore();
 }
 
-document.getElementById('button-a').addEventListener('click', () => {
-    checkWinner('A');
-    displayItems();
-});
-
-document.getElementById('button-b').addEventListener('click', () => {
-    checkWinner('B');
-    displayItems();
-});
-
-playAgainButton.addEventListener('click', () => {
+function resetGame() {
     score = 0;
-    updateScore();
-    displayItems();
-    playAgainButton.style.display = 'none';
-    resultElement.textContent = '';
-});
+    document.getElementById("score").textContent = `Current Score: ${score}`;
+    getRandomChoices();
+}
 
-// Initial setup
-updateScore();
-displayItems();
+function animateCorrectChoice(choice) {
+    const element = choice === "A" ? document.getElementById("choiceA") : document.getElementById("choiceB");
+    element.style.backgroundColor = "#28a745";
+    setTimeout(() => {
+        element.style.backgroundColor = "";
+    }, 500);
+}
+
+document.getElementById("buttonA").addEventListener("click", () => checkWinner("A"));
+document.getElementById("buttonB").addEventListener("click", () => checkWinner("B"));
+
+getRandomChoices();
