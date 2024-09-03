@@ -68,11 +68,17 @@ const stuff = ["Kim Kardashian", "Cristiano Ronaldo", "Taylor Swift", "Ariana Gr
 let score = 0;
 let correctAnswer = "Option A"; // Przykładowa poprawna odpowiedź
 
+let score = 0;
+let correctAnswer = ""; // Zmieniamy na pusty ciąg, ponieważ będziemy go ustawiać dynamicznie
+
 function getRandomChoices() {
+    // Wybieramy dwie losowe opcje
     const [first, second] = randomSample(stuff, 2);
+    // Aktualizujemy tekst opcji w HTML
     document.getElementById("optionA").textContent = first;
     document.getElementById("optionB").textContent = second;
-    correctAnswer = first; // Załóżmy, że poprawna odpowiedź to `first`
+    // Ustawiamy poprawną odpowiedź (przykład: opcja 'first' jako poprawna)
+    correctAnswer = first;
 }
 
 function randomSample(arr, n) {
@@ -92,6 +98,10 @@ function checkAnswer(choice) {
     const optionA = document.getElementById("optionA");
     const optionB = document.getElementById("optionB");
     const resultMessage = document.getElementById("result-message");
+
+    // Resetujemy klasy CSS
+    optionA.classList.remove("correct-answer", "wrong-answer");
+    optionB.classList.remove("correct-answer", "wrong-answer");
 
     if (choice === correctAnswer) {
         score++;
@@ -119,13 +129,8 @@ function checkAnswer(choice) {
         }
     }
 
-    // Reset klasy po pewnym czasie i załaduj nowe pytanie
-    setTimeout(() => {
-        optionA.classList.remove("correct-answer", "wrong-answer");
-        optionB.classList.remove("correct-answer", "wrong-answer");
-        resultMessage.textContent = "";
-        getRandomChoices();
-    }, 1500); // Poczekaj 1.5 sekundy, zanim załadujesz nowe pytanie
+    // Po 1.5 sekundzie ładowanie nowych opcji
+    setTimeout(getRandomChoices, 1500); // Poczekaj 1.5 sekundy, zanim załadujesz nowe pytanie
 }
 
 document.getElementById("buttonA").addEventListener("click", function() {
@@ -136,4 +141,5 @@ document.getElementById("buttonB").addEventListener("click", function() {
     checkAnswer(document.getElementById("optionB").textContent);
 });
 
-getRandomChoices(); // Załaduj początkowe pytanie
+// Załaduj początkowe pytanie
+getRandomChoices();
