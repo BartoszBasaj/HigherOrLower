@@ -142,7 +142,7 @@ function checkAnswer(choice) {
         }
     }
 
-    setTimeout(getRandomChoices, 1500); // Poczekaj 1.5 sekundy, zanim załadujesz nowe pytanie
+    setTimeout(getRandomChoices, 500); // Poczekaj 1.5 sekundy, zanim załadujesz nowe pytanie
 }
 
 document.getElementById("buttonA").addEventListener("click", function() {
