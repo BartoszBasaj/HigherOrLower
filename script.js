@@ -66,13 +66,13 @@ const dict = {
 const stuff = ["Kim Kardashian", "Cristiano Ronaldo", "Taylor Swift", "Ariana Grande", "Elon Musk", "Jeff Bezos", "PewDiePie", "MrBeast", "iPhone", "Samsung Galaxy", "PlayStation 5", "Xbox Series X", "TikTok", "Instagram", "ChatGPT", "Siri", "Breaking Bad", "Game of Thrones", "Avengers: Endgame", "Titanic", "Harry Potter", "Lord of the Rings", "Friends", "The Office", "Nike", "Adidas", "Coca-Cola", "Pepsi", "McDonald's", "Burger King", "Tesla", "BMW", "NBA", "NFL", "LeBron James", "Michael Jordan", "Lionel Messi", "Super Bowl", "World Cup", "Paris", "New York", "Eiffel Tower", "Statue of Liberty", "Maldives", "Hawaii", "Great Wall of China", "Machu Picchu", "The Beatles", "Rolling Stones", "Billie Eilish", "Post Malone", "Drake", "Kanye West", "Thriller", "The Dark Side of the Moon", "Fortnite", "Minecraft", "Call of Duty", "Battlefield", "League of Legends", "Dota 2", "Super Mario", "The Legend of Zelda"
 ]
 let score = 0;
-let currentChoices = [];
+let correctAnswer = "Option A"; // Przykładowa poprawna odpowiedź
 
 function getRandomChoices() {
     const [first, second] = randomSample(stuff, 2);
     document.getElementById("optionA").textContent = first;
     document.getElementById("optionB").textContent = second;
-    currentChoices = [first, second];
+    correctAnswer = first; // Załóżmy, że poprawna odpowiedź to `first`
 }
 
 function randomSample(arr, n) {
@@ -88,36 +88,40 @@ function randomSample(arr, n) {
     return result;
 }
 
-function checkWinner(choice) {
-    const [first, second] = currentChoices;
-    const correct = (choice === "A" && dict[first] > dict[second]) || (choice === "B" && dict[first] < dict[second]);
+function checkAnswer(choice) {
+    const optionA = document.getElementById("optionA");
+    const optionB = document.getElementById("optionB");
 
-    if (correct) {
+    if (choice === correctAnswer) {
         score++;
         document.getElementById("score").textContent = `Current Score: ${score}`;
-        animateCorrectChoice(choice);
-        setTimeout(getRandomChoices, 1000);
+        if (choice === optionA.textContent) {
+            optionA.classList.add("correct-answer");
+        } else {
+            optionB.classList.add("correct-answer");
+        }
     } else {
-        alert(`Game over! Your final score is: ${score}`);
-        resetGame();
+        if (choice === optionA.textContent) {
+            optionA.classList.add("wrong-answer");
+            if (optionB.textContent === correctAnswer) {
+                optionB.classList.add("correct-answer");
+            }
+        } else {
+            optionB.classList.add("wrong-answer");
+            if (optionA.textContent === correctAnswer) {
+                optionA.classList.add("correct-answer");
+            }
+        }
     }
+    setTimeout(getRandomChoices, 1500); // Poczekaj 1.5 sekundy, zanim załadujesz nowe pytanie
 }
 
-function resetGame() {
-    score = 0;
-    document.getElementById("score").textContent = `Current Score: ${score}`;
-    getRandomChoices();
-}
+document.getElementById("buttonA").addEventListener("click", function() {
+    checkAnswer(document.getElementById("optionA").textContent);
+});
 
-function animateCorrectChoice(choice) {
-    const element = choice === "A" ? document.getElementById("choiceA") : document.getElementById("choiceB");
-    element.style.backgroundColor = "#28a745";
-    setTimeout(() => {
-        element.style.backgroundColor = "";
-    }, 500);
-}
+document.getElementById("buttonB").addEventListener("click", function() {
+    checkAnswer(document.getElementById("optionB").textContent);
+});
 
-document.getElementById("buttonA").addEventListener("click", () => checkWinner("A"));
-document.getElementById("buttonB").addEventListener("click", () => checkWinner("B"));
-
-getRandomChoices();
+getRandomChoices(); // Załaduj początkowe pytanie
