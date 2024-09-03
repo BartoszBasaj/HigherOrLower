@@ -1,8 +1,8 @@
 /* styles.css */
 
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+    font-family: 'Arial', sans-serif;
+    background: #f0f4f8;
     color: #333;
     margin: 0;
     padding: 0;
@@ -13,19 +13,19 @@ body {
 }
 
 .container {
-    text-align: center;
-    background: #fff;
+    background: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     width: 90%;
     max-width: 600px;
+    text-align: center;
 }
 
 h1 {
     margin-bottom: 20px;
+    font-size: 2.5em;
     color: #333;
-    font-size: 2em;
 }
 
 .score {
@@ -57,25 +57,26 @@ h1 {
     background: #e9ecef;
 }
 
-.option-text {
-    font-size: 1.2em;
-}
-
-.correct-answer {
+.option-button.correct-answer {
     background-color: #d4edda !important;
     border-color: #c3e6cb !important;
     color: #155724 !important;
 }
 
-.wrong-answer {
+.option-button.wrong-answer {
     background-color: #f8d7da !important;
     border-color: #f5c6cb !important;
     color: #721c24 !important;
+}
+
+.option-text {
+    font-size: 1.2em;
 }
 
 .result-message {
     font-size: 1.5em;
     font-weight: bold;
     margin-top: 20px;
+    color: #333;
     transition: color 0.3s ease;
 }

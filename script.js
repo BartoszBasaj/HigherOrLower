@@ -1,22 +1,5 @@
 // script.js
 
-const stuff = [
-    "Kim Kardashian", "Cristiano Ronaldo", "Taylor Swift", "Ariana Grande",
-    "Elon Musk", "Jeff Bezos", "PewDiePie", "MrBeast", "iPhone",
-    "Samsung Galaxy", "PlayStation 5", "Xbox Series X", "TikTok",
-    "Instagram", "ChatGPT", "Siri", "Breaking Bad", "Game of Thrones",
-    "Avengers: Endgame", "Titanic", "Harry Potter", "Lord of the Rings",
-    "Friends", "The Office", "Nike", "Adidas", "Coca-Cola", "Pepsi",
-    "McDonald's", "Burger King", "Tesla", "BMW", "NBA", "NFL",
-    "LeBron James", "Michael Jordan", "Lionel Messi", "Super Bowl",
-    "World Cup", "Paris", "New York", "Eiffel Tower", "Statue of Liberty",
-    "Maldives", "Hawaii", "Great Wall of China", "Machu Picchu",
-    "The Beatles", "Rolling Stones", "Billie Eilish", "Post Malone",
-    "Drake", "Kanye West", "Thriller", "The Dark Side of the Moon",
-    "Fortnite", "Minecraft", "Call of Duty", "Battlefield",
-    "League of Legends", "Dota 2", "Super Mario", "The Legend of Zelda"
-];
-
 const dict = {
     "Kim Kardashian": 3000000,
     "Cristiano Ronaldo": 5000000,
@@ -82,6 +65,8 @@ const dict = {
     "Super Mario": 3000000,
     "The Legend of Zelda": 2000000
 };
+
+const stuff = Object.keys(dict);
 
 let score = 0;
 let correctAnswer = "";
