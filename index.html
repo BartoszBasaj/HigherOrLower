@@ -4,22 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Higher or Lower Game</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <h1>Higher or Lower Game</h1>
-        <div id="question">
-            <p id="optionA" class="option">Compare A: Option A</p>
-            <p id="vs">VS</p>
-            <p id="optionB" class="option">Compare B: Option B</p>
+        <div id="score" class="score">Current Score: 0</div>
+        <div class="comparison">
+            <button id="buttonA" class="option-button">
+                <div id="optionA" class="option-text">Option A</div>
+            </button>
+            <button id="buttonB" class="option-button">
+                <div id="optionB" class="option-text">Option B</div>
+            </button>
         </div>
-        <div class="controls">
-            <button id="buttonA">A has more</button>
-            <button id="buttonB">B has more</button>
-        </div>
-        <div id="score">Current Score: 0</div>
-        <div id="result-message"></div> <!-- Miejsce na komunikat -->
+        <div id="result-message" class="result-message"></div>
     </div>
     <script src="script.js"></script>
 </body>

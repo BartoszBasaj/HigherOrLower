@@ -1,3 +1,5 @@
+// script.js
+
 const stuff = [
     "Kim Kardashian", "Cristiano Ronaldo", "Taylor Swift", "Ariana Grande",
     "Elon Musk", "Jeff Bezos", "PewDiePie", "MrBeast", "iPhone",
@@ -85,14 +87,11 @@ let score = 0;
 let correctAnswer = ""; // Zmieniamy na pusty ciąg, ponieważ będziemy go ustawiać dynamicznie
 
 function getRandomChoices() {
-    // Wybieramy dwie losowe opcje
     const [first, second] = randomSample(stuff, 2);
 
-    // Aktualizujemy tekst opcji w HTML
     document.getElementById("optionA").textContent = first;
     document.getElementById("optionB").textContent = second;
 
-    // Ustawiamy poprawną odpowiedź na opcję z większą liczbą
     correctAnswer = dict[first] > dict[second] ? first : second;
 }
 
@@ -114,7 +113,6 @@ function checkAnswer(choice) {
     const optionB = document.getElementById("optionB");
     const resultMessage = document.getElementById("result-message");
 
-    // Resetujemy klasy CSS
     optionA.classList.remove("correct-answer", "wrong-answer");
     optionB.classList.remove("correct-answer", "wrong-answer");
 
@@ -122,7 +120,7 @@ function checkAnswer(choice) {
         score++;
         document.getElementById("score").textContent = `Current Score: ${score}`;
         resultMessage.textContent = "Correct!";
-        resultMessage.style.color = "green";
+        resultMessage.style.color = "#28a745"; // Zielony kolor dla poprawnej odpowiedzi
         if (choice === optionA.textContent) {
             optionA.classList.add("correct-answer");
         } else {
@@ -130,7 +128,7 @@ function checkAnswer(choice) {
         }
     } else {
         resultMessage.textContent = "Wrong answer!";
-        resultMessage.style.color = "red";
+        resultMessage.style.color = "#dc3545"; // Czerwony kolor dla błędnej odpowiedzi
         if (choice === optionA.textContent) {
             optionA.classList.add("wrong-answer");
             if (optionB.textContent === correctAnswer) {
@@ -144,7 +142,6 @@ function checkAnswer(choice) {
         }
     }
 
-    // Po 1.5 sekundzie ładowanie nowych opcji
     setTimeout(getRandomChoices, 1500); // Poczekaj 1.5 sekundy, zanim załadujesz nowe pytanie
 }
 
@@ -156,5 +153,4 @@ document.getElementById("buttonB").addEventListener("click", function() {
     checkAnswer(document.getElementById("optionB").textContent);
 });
 
-// Załaduj początkowe pytanie
 getRandomChoices();
