@@ -91,16 +91,21 @@ function randomSample(arr, n) {
 function checkAnswer(choice) {
     const optionA = document.getElementById("optionA");
     const optionB = document.getElementById("optionB");
+    const resultMessage = document.getElementById("result-message");
 
     if (choice === correctAnswer) {
         score++;
         document.getElementById("score").textContent = `Current Score: ${score}`;
+        resultMessage.textContent = "Correct!";
+        resultMessage.style.color = "green";
         if (choice === optionA.textContent) {
             optionA.classList.add("correct-answer");
         } else {
             optionB.classList.add("correct-answer");
         }
     } else {
+        resultMessage.textContent = "Wrong answer!";
+        resultMessage.style.color = "red";
         if (choice === optionA.textContent) {
             optionA.classList.add("wrong-answer");
             if (optionB.textContent === correctAnswer) {
@@ -113,7 +118,14 @@ function checkAnswer(choice) {
             }
         }
     }
-    setTimeout(getRandomChoices, 1500); // Poczekaj 1.5 sekundy, zanim załadujesz nowe pytanie
+
+    // Reset klasy po pewnym czasie i załaduj nowe pytanie
+    setTimeout(() => {
+        optionA.classList.remove("correct-answer", "wrong-answer");
+        optionB.classList.remove("correct-answer", "wrong-answer");
+        resultMessage.textContent = "";
+        getRandomChoices();
+    }, 1500); // Poczekaj 1.5 sekundy, zanim załadujesz nowe pytanie
 }
 
 document.getElementById("buttonA").addEventListener("click", function() {
