@@ -1,82 +1,74 @@
-/* styles.css */
-
-body {
-    font-family: 'Arial', sans-serif;
-    background: #f0f4f8;
-    color: #333;
+/* Reset some default styles */
+body, h1, button {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic body styling */
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
+/* Container styling */
 .container {
-    background: #ffffff;
+    background: white;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    width: 90%;
-    max-width: 600px;
     text-align: center;
+    width: 300px;
 }
 
+/* Heading styling */
 h1 {
+    font-size: 1.5em;
     margin-bottom: 20px;
-    font-size: 2.5em;
+}
+
+/* Score styling */
+.score {
+    font-size: 1.2em;
+    margin-bottom: 20px;
     color: #333;
 }
 
-.score {
-    font-size: 1.5em;
-    margin-bottom: 20px;
-    color: #555;
-}
-
+/* Comparison buttons styling */
 .comparison {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
+/* Option buttons styling */
 .option-button {
-    background: #f8f9fa;
-    border: 2px solid #dee2e6;
+    background: #3498db;
+    border: none;
     border-radius: 8px;
-    padding: 20px;
-    width: 45%;
+    color: white;
     cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    font-size: 1.2em;
-    color: #333;
+    font-size: 1em;
+    padding: 10px;
+    width: 45%;
+    transition: background 0.3s;
 }
 
 .option-button:hover {
-    background: #e9ecef;
+    background: #2980b9;
 }
 
-.option-button.correct-answer {
-    background-color: #d4edda !important;
-    border-color: #c3e6cb !important;
-    color: #155724 !important;
-}
-
-.option-button.wrong-answer {
-    background-color: #f8d7da !important;
-    border-color: #f5c6cb !important;
-    color: #721c24 !important;
-}
-
+/* Option text styling */
 .option-text {
     font-size: 1.2em;
 }
 
+/* Result message styling */
 .result-message {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-top: 20px;
-    color: #333;
-    transition: color 0.3s ease;
+    font-size: 1.2em;
+    color: #e74c3c;
 }
