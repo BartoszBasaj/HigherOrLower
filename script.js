@@ -84,7 +84,7 @@ const dict = {
 };
 
 let score = 0;
-let correctAnswer = ""; // Zmieniamy na pusty ciąg, ponieważ będziemy go ustawiać dynamicznie
+let correctAnswer = "";
 
 function getRandomChoices() {
     const [first, second] = randomSample(stuff, 2);
@@ -142,7 +142,7 @@ function checkAnswer(choice) {
         }
     }
 
-    setTimeout(getRandomChoices, 1000); // Zmieniono czas oczekiwania na 1 sekundy
+    setTimeout(getRandomChoices, 1000); // Zmieniono czas oczekiwania na 1 sekundę
 }
 
 document.getElementById("buttonA").addEventListener("click", function() {

@@ -25,10 +25,11 @@ body {
 h1 {
     margin-bottom: 20px;
     color: #333;
+    font-size: 2em;
 }
 
 .score {
-    font-size: 1.2em;
+    font-size: 1.5em;
     margin-bottom: 20px;
     color: #555;
 }
@@ -48,6 +49,8 @@ h1 {
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
+    font-size: 1.2em;
+    color: #333;
 }
 
 .option-button:hover {
@@ -55,8 +58,7 @@ h1 {
 }
 
 .option-text {
-    font-size: 1.1em;
-    color: #333;
+    font-size: 1.2em;
 }
 
 .correct-answer {
@@ -72,12 +74,8 @@ h1 {
 }
 
 .result-message {
-    font-size: 1.2em;
+    font-size: 1.5em;
     font-weight: bold;
     margin-top: 20px;
     transition: color 0.3s ease;
-}
-
-button:focus {
-    outline: none;
 }
