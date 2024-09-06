@@ -1,24 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Higher or Lower Game</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1>Higher or Lower Game</h1>
-        <div id="score" class="score">Current Score: 0</div>
-        <div class="comparison">
-            <button id="buttonA" class="option-button">
-                <div id="optionA" class="option-text">Option A</div>
-            </button>
-            <button id="buttonB" class="option-button">
-                <div id="optionB" class="option-text">Option B</div>
-            </button>
+        <div id="game">
+            <div class="comparison">
+                <div class="option" id="optionA">
+                    <h2 id="compareA">Compare A: </h2>
+                </div>
+                <div class="option" id="optionB">
+                    <h2 id="compareB">Against B: </h2>
+                </div>
+            </div>
+            <div class="choice-buttons">
+                <button id="chooseA" class="button">Choose A</button>
+                <button id="chooseB" class="button">Choose B</button>
+            </div>
+            <h2 id="score">Score: 0</h2>
         </div>
-        <div id="result-message" class="result-message"></div>
+        <div id="restart-container" class="hidden">
+            <button id="restart" class="button">Play Again</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

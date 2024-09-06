@@ -38,5 +38,4 @@ while playAgain:
         os.system('cls')
     else:
         playAgain = False
-
 print("Okey. Goodbye!")
